@@ -34,6 +34,16 @@ namespace WebApiFinalPonceJuanManuel.Controllers
 
             return doctor;
         }
+
+        [HttpGet("especialidad/{especialidad}")]
+        public Doctor Get(string especialidad)
+        {
+            Doctor doctor = (from d in Context.Doctores
+                             where especialidad == d.Especialidad
+                             select d).SingleOrDefault();
+            return doctor;
+        }
+
         [HttpPost]
         public ActionResult Post(Doctor doctor)
         {
